@@ -1,0 +1,18 @@
+services:
+  db:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./volumes/postgres:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=hello_db
+      - POSTGRES_USER=dbuser
+      - POSTGRES_PASSWORD=12345
+
+  app:
+    image: hello-app:latest
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
