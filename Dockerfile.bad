@@ -1,0 +1,4 @@
+FROM eclipse-temurin:21-jdk
+WORKDIR app
+ADD target/*.jar hello.jar
+ENTRYPOINT ["java","-jar","hello.jar"]
